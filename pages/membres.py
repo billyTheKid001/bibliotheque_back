@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
-import hashlib
+import bcrypt
 from config.connexion import get_connexion
 
 BG   = "#F4F6F9"
@@ -109,7 +109,7 @@ class PageMembres(tk.Frame):
         if not nom or not prenom or not email or not mdp:
             messagebox.showwarning("Attention", "Tous les champs sont obligatoires.")
             return
-        mdp_hash = hashlib.sha256(mdp.encode()).hexdigest()
+        mdp_hash = bcrypt.hashpw(mdp.encode(), bcrypt.gensalt()).decode()
         conn = get_connexion()
         if not conn: return
         try:

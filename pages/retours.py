@@ -124,7 +124,7 @@ class PageRetours(tk.Frame):
         finally:
             conn.close()
 
-    def valider_retour(self):
+    def  valider_retour(self):
         sel = self.tableau.selection()
         if not sel:
             messagebox.showwarning("Attention", "Sélectionnez un emprunt.")
